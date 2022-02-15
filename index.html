@@ -6,16 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <title>Avocado</title>
   </head>
   <body>
     <header class="header">
       <img src="img/logo.png" alt="Logo" class="header__logo" />
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn">
+        <span class="navicon"></span>
+      </label>
       <nav class="navbar">
         <ul class="navbar__items">
           <li class="navbar__item">
-            <a href="index.html" class="navbar__link navbar__link--active">Inicio</a>
+            <a href="/" class="navbar__link navbar__link--active">Inicio</a>
           </li>
           <li class="navbar__item">
             <a href="pages/products.html" class="navbar__link">Productos</a>
@@ -30,68 +37,110 @@
             <a href="pages/contact.html" class="navbar__link">Contactos</a>
           </li>
         </ul>
+        <form action="" class="searchForm">
+          <input type="search" required />
+          <span class="material-icons"> search </span>
+        </form>
       </nav>
-      <form action="" class="searchForm">
-        <input type="search" required>
-        <span class="material-icons">
-          search
-          </span>
-      </form>
     </header>
     <main>
       <section class="animationOut">
         <div class="bigBanner">
           <img class="bigBanner__img" src="img/plato_6.webp" alt="plato_6" />
           <div class="bigBanner__summary">
-            <h1 class="bigBanner__title productName productName--big animation animation--fade">Lorem N°6</h1>
+            <h1
+              class="bigBanner__title productName productName--big animation animation--fade"
+            >
+              Lorem N°6
+            </h1>
             <p class="bigBanner__description animation animation--fade">
-              Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod
-              tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex
-              ea commodi
+              Lorem ipsum dolor sit amet, consectetur adipisici elit, sed
+              eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim
+              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquid ex ea commodi
             </p>
             <div class="bigBanner__buttons">
-              <a href="pages/pruductDetails.html" class="button button--primary floatRight">Ver más</a>
-              <a href="pages/contact.html" class="button button--secondary floatRight">Consultar</a>
+              <a
+                href="pages/pruductDetails.html"
+                class="button button--primary floatRight"
+                >Ver más</a
+              >
+              <a
+                href="pages/contact.html"
+                class="button button--secondary floatRight"
+                >Consultar</a
+              >
             </div>
           </div>
         </div>
       </section>
       <section class="productsContainer">
         <article class="horizontalCard">
-          <img src="img/plato_1.webp" alt="plato_1" class="horizontalCard_img" />
+          <img
+            src="img/plato_1.webp"
+            alt="plato_1"
+            class="horizontalCard_img"
+          />
           <div class="horizontalCard__body">
             <div class="horizontalCard__title">
               <h3 class="productName productName--small">Lorem N°1</h3>
             </div>
-            <a href="pages/pruductDetails.html" class="button button--primary floatRight">Ver más</a>
+            <a
+              href="pages/pruductDetails.html"
+              class="button button--primary floatRight"
+              >Ver más</a
+            >
           </div>
         </article>
         <article class="horizontalCard">
-          <img src="img/plato_2.webp" alt="plato_2" class="horizontalCard_img" />
+          <img
+            src="img/plato_2.webp"
+            alt="plato_2"
+            class="horizontalCard_img"
+          />
           <div class="horizontalCard__body">
             <div class="horizontalCard__title">
               <h3 class="productName productName--small">Lorem N°2</h3>
             </div>
-            <a href="pages/pruductDetails.html" class="button button--primary floatRight">Ver más</a>
+            <a
+              href="pages/pruductDetails.html"
+              class="button button--primary floatRight"
+              >Ver más</a
+            >
           </div>
         </article>
         <article class="horizontalCard">
-          <img src="img/plato_3.webp" alt="plato_3" class="horizontalCard_img" />
+          <img
+            src="img/plato_3.webp"
+            alt="plato_3"
+            class="horizontalCard_img"
+          />
           <div class="horizontalCard__body">
             <div class="horizontalCard__title">
               <h3 class="productName productName--small">Lorem N°3</h3>
             </div>
-            <a href="pages/pruductDetails.html" class="button button--primary floatRight">Ver más</a>
+            <a
+              href="pages/pruductDetails.html"
+              class="button button--primary floatRight"
+              >Ver más</a
+            >
           </div>
         </article>
         <article class="horizontalCard">
-          <img src="img/plato_4.webp" alt="plato_4" class="horizontalCard_img" />
+          <img
+            src="img/plato_4.webp"
+            alt="plato_4"
+            class="horizontalCard_img"
+          />
           <div class="horizontalCard__body">
             <div class="horizontalCard__title">
               <h3 class="productName productName--small">Lorem N°4</h3>
             </div>
-            <a href="pages/pruductDetails.html" class="button button--primary floatRight">Ver más</a>
+            <a
+              href="pages/pruductDetails.html"
+              class="button button--primary floatRight"
+              >Ver más</a
+            >
           </div>
         </article>
       </section>

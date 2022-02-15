@@ -12,10 +12,14 @@
   <body>
     <header class="header">
       <img src="../img/logo.png" alt="Logo" class="header__logo" />
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn">
+        <span class="navicon"></span>
+      </label>
       <nav class="navbar floatRight">
         <ul class="navbar__items">
           <li class="navbar__item">
-            <a href="../index.html" class="navbar__link">Inicio</a>
+            <a href="/" class="navbar__link">Inicio</a>
           </li>
           <li class="navbar__item">
             <a href="products.html" class="navbar__link navbar__link--active">Productos</a>
@@ -30,15 +34,16 @@
             <a href="contact.html" class="navbar__link">Contactos</a>
           </li>
         </ul>
+        <form action="" class="searchForm">
+          <input type="search" required />
+          <span class="material-icons"> search </span>
+        </form>
       </nav>
-      <form action="" class="searchForm">
-        <input type="search" required>
-        <span class="material-icons">
-          search
-          </span>
-      </form>
     </header>
     <main class="grid">
+      <section class="productPictureContainer">
+        <img src="../img/plato_7.png" alt="producto" class="productPicture animation animation--rotateToLeft"/>
+      </section>
       <section class="productsDetails">
         <h1 class="productName productName--big animation animation--fade">Producto Genérico</h1>
         <p class="animation animation--fade">
@@ -66,21 +71,18 @@
         <h3 class="productsNutritionFacts__title">Informacion Nutricional</h3>
         <div class="productsNutritionFacts__container">
           <div class="productInformationItem">
-            <img src="../img/cat.png" alt="info 1" />
+            <img src="../img/cat.png" alt="info 1" class="productInformationItem__img" />
           </div>
           <div class="productInformationItem">
-            <img src="../img/cat.png" alt="info 2" />
+            <img src="../img/cat.png" alt="info 2" class="productInformationItem__img" />
           </div>
           <div class="productInformationItem">
-            <img src="../img/cat.png" alt="info 3" />
+            <img src="../img/cat.png" alt="info 3" class="productInformationItem__img" />
           </div>
           <div class="productInformationItem">
-            <img src="../img/cat.png" alt="info 4" />
+            <img src="../img/cat.png" alt="info 4" class="productInformationItem__img" />
           </div>
         </div>
-      </section>
-      <section class="productPictureContainer">
-        <img src="../img/plato_7.png" alt="producto" class="productPicture animation animation--rotateToLeft"/>
       </section>
       <section class="relatedProducts">
         <h3 class="relatedProducts__title">Puede que estos platos te interesen</h3>

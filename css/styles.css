@@ -47,15 +47,6 @@ main {
   height: 100px;
   width: 100px;
 }
-/* 
-.productInformationItem:hover {
-  background: rgba(159, 204, 100, 0.59);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(159, 204, 100, 0.3);
-} */
 
 .productInformationItem__img {
   height: 100%;
@@ -65,7 +56,6 @@ main {
 .header {
   position: sticky;
   top: 0;
-  background-color: #9fcc6400;
   z-index: 1;
   display: flex;
   justify-content: space-between;
@@ -76,6 +66,7 @@ main {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  flex-wrap: wrap;
 }
 
 /* Input Search */
@@ -141,9 +132,12 @@ main {
 /* Navbar */
 
 .navbar {
-  display: flex;
   justify-content: space-around;
   align-items: center;
+  display: none;
+  clear: both;
+  height: 0;
+  transition: height 1s;
 }
 
 .header__logo {
@@ -181,6 +175,75 @@ main {
   list-style: none;
 }
 
+/* --------------------Codigo Copiado-------------------- */
+/* https://codepen.io/mutedblues/pen/MmPNPG?editors=1100 */
+/* menu icon */
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .navbar {
+  height: 200px;
+  display: flex;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+/* --------------------Fin Codigo Copiado-------------------- */
+
 .footer {
   position: fixed;
   bottom: 0px;
@@ -197,6 +260,9 @@ main {
 .bigBanner {
   padding: 20px;
   width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .bigBanner__img {
@@ -209,7 +275,7 @@ main {
   position: relative;
   height: 100%;
   width: 75%;
-  top: -10rem;
+  /* top: -10rem; */
   padding: 50px;
 }
 
@@ -381,6 +447,8 @@ main {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  overflow: auto;
+  width: 100vw;
 }
 
 .productsNutritionFacts {
@@ -395,6 +463,8 @@ main {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  overflow: auto;
+  width: 100vw;
 }
 
 .relatedProducts {
@@ -422,6 +492,7 @@ main {
   position: absolute;
   right: 0px;
   width: 80%;
+  height: auto;
 }
 
 .productName {
@@ -536,5 +607,90 @@ main {
   100% {
     transform: rotate(0deg);
     right: 0px;
+  }
+}
+
+/* Responsive */
+/* @media only screen and (max-width: 1150px) {
+  .header {
+  }
+} */
+
+@media (min-width: 1112px) {
+  .header .navbar {
+    clear: none;
+    float: right;
+    max-height: none;
+    display: flex;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+  .bigBanner {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 1111px) {
+  .navbar {
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    flex-basis: 100%;
+  }
+  .navbar__items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .productName--big {
+    font-size: 5rem;
+  }
+
+  .productName--medium {
+    font-size: 3rem;
+  }
+
+  .productName--small {
+    font-size: 1rem;
+  }
+
+  .bigBanner {
+    flex-direction: column;
+  }
+  .bigBanner__img {
+    width: 50%;
+    height: auto;
+  }
+  .productsContainer {
+    justify-content: center;
+  }
+
+  .grid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .productPicture {
+    position: initial;
+    width: 80%;
+  }
+}
+@media (max-width: 500px) {
+  .productName--big {
+    font-size: 3rem;
+  }
+
+  .productName--medium {
+    font-size: 2rem;
+  }
+
+  .productName--small {
+    font-size: 1rem;
   }
 }
