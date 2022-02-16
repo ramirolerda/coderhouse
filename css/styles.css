@@ -38,7 +38,7 @@ main {
 .productInformationItem {
   background: rgba(255, 255, 255, 0.59);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -175,8 +175,7 @@ main {
   list-style: none;
 }
 
-/* --------------------Codigo Copiado-------------------- */
-/* https://codepen.io/mutedblues/pen/MmPNPG?editors=1100 */
+/* --------------------Mobile Menu-------------------- */
 /* menu icon */
 .header .menu-icon {
   cursor: pointer;
@@ -242,7 +241,7 @@ main {
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
   top: 0;
 }
-/* --------------------Fin Codigo Copiado-------------------- */
+/* --------------------End Mobile Menu-------------------- */
 
 .footer {
   position: fixed;
@@ -311,12 +310,16 @@ main {
   border: 1px solid rgba(159, 204, 100, 0.3);
 }
 .verticalCard__body {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
 }
 .verticalCard_img {
   padding: 0 15px;
-  width: 128px;
+  width: 208px;
   height: auto;
 }
 .verticalCard__title {
@@ -421,7 +424,7 @@ main {
     "productsDetails productPicture"
     "productIngredients productPicture "
     "productsNutritionFacts productPicture"
-    "relatedProducts relatedProducts";
+    "products products";
   grid-template-columns: 50% 50%;
   /* grid-template-rows: 1fr 1fr 1fr 1fr; */
 }
@@ -467,8 +470,8 @@ main {
   width: 100vw;
 }
 
-.relatedProducts {
-  grid-area: relatedProducts;
+.products {
+  grid-area: products;
   padding: 10px;
 }
 
@@ -508,6 +511,44 @@ main {
 
 .productName--small {
   font-size: 2rem;
+}
+
+/* Products Page */
+/* categories */
+.categoriesArea {
+  padding: 0 10px;
+}
+
+.categories__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+  width: 100vw;
+}
+
+.categoryItem {
+  background: rgba(255, 255, 255, 0.59);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 5px;
+  margin: 10px;
+  height: 100px;
+  width: 100px;
+}
+
+.categoryItem:hover {
+  transform: scale(1.1);
+  transition: all 0.2s;
+}
+
+
+.categoryItem__img {
+  height: 100%;
+  width: auto;
 }
 
 /* Animations */
@@ -659,6 +700,9 @@ main {
   .bigBanner {
     flex-direction: column;
   }
+  .bigBanner__summary {
+    width: 100%;
+  }
   .bigBanner__img {
     width: 50%;
     height: auto;
@@ -679,6 +723,14 @@ main {
   .productPicture {
     position: initial;
     width: 80%;
+  }
+  .bigBanner__buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .bigBanner__buttons .floatRight {
+    float: none;
   }
 }
 @media (max-width: 500px) {
