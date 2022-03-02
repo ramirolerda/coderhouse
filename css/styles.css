@@ -266,7 +266,8 @@ main {
 
 .bigBanner__img {
   display: inline-block;
-  width: 20%;
+  width: 100%;
+  height: auto;
 }
 
 .bigBanner__summary {
@@ -753,10 +754,6 @@ main {
   .bigBanner__summary {
     width: 100%;
   }
-  .bigBanner__img {
-    width: 50%;
-    height: auto;
-  }
   .productsContainer {
     justify-content: center;
   }
@@ -791,11 +788,6 @@ main {
   }
 }
 @media (max-width: 480px) {
-  .bigBanner__img {
-    width: 100%;
-    height: auto;
-  }
-
   .horizontalCard {
     padding: 10px;
   }
