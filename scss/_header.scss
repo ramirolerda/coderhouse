@@ -1,0 +1,203 @@
+@import "./_variable.scss";
+
+/* --------------------Mobile Menu-------------------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.59);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  flex-wrap: wrap;
+  .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+    .navicon {
+      background: #333;
+      display: block;
+      height: 2px;
+      position: relative;
+      transition: background 0.2s ease-out;
+      width: 18px;
+    }
+    .navicon:before,
+    .navicon:after {
+      background: #333;
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      transition: all 0.2s ease-out;
+      width: 100%;
+    }
+    .navicon:before {
+      top: 5px;
+    }
+    .navicon:after {
+      top: -5px;
+    }
+  }
+  .menu-btn {
+    display: none;
+  }
+  .menu-btn:checked ~ .menu {
+    height: 100%;
+    display: flex;
+  }
+  .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+  }
+  .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+  }
+  .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+  }
+  .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+  .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+  }
+
+  /* Input Search */
+  .searchInput {
+    position: relative;
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    margin: 0 20px;
+    background: $primaryColor;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid $primaryColor;
+  }
+
+  .searchInput input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+  }
+
+  .material-icons {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+  }
+
+  .searchInput:hover,
+  .searchInput:valid {
+    width: 200px;
+    cursor: pointer;
+  }
+
+  .searchInput:hover input,
+  .searchInput:valid input {
+    display: block;
+  }
+
+  .searchInput:hover .material-icons,
+  .searchInput:valid .material-icons {
+    background: #07051a;
+    color: $primaryColor;
+  }
+
+  /* Navbar */
+
+  .menu {
+    justify-content: space-around;
+    align-items: center;
+    display: none;
+    clear: both;
+    height: 0;
+    transition: height 1s;
+  }
+
+  .header__logo {
+    margin: 0 20px;
+    height: 100px;
+    width: auto;
+  }
+
+  .menu__item {
+    display: inline;
+  }
+
+  .menu__link {
+    text-decoration: none;
+    color: $primaryColor;
+    margin: 0 10px;
+    border-bottom: 0px solid $primaryColor;
+    transition: all 0.2s;
+    font-size: 1.5rem;
+  }
+
+  .menu__link:hover {
+    border-bottom: 4px solid $primaryColor;
+    color: $primaryColor;
+    font-size: 2rem;
+  }
+
+  .menu__link--active {
+    font-weight: bold;
+    border-bottom: 4px solid $primaryColor;
+    color: $primaryColor;
+  }
+
+  .menu__items {
+    list-style: none;
+  }
+
+  @media (min-width: 1112px) {
+    .menu {
+      clear: none;
+      float: right;
+      max-height: none;
+      display: flex;
+    }
+    .menu-icon {
+      display: none;
+    }
+  }
+  @media (max-width: 1111px) {
+    .menu {
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: column;
+      flex-basis: 100%;
+    }
+    .menu__items {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
+}
+/* --------------------End Mobile Menu-------------------- */

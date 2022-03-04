@@ -1,0 +1,100 @@
+
+/* Animations */
+
+.animation {
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+  }
+  
+  .animation--fade {
+    animation-name: fade;
+    /* animation-delay: 0s; */
+  }
+  
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.1;
+    }
+    20% {
+      opacity: 0.2;
+    }
+    30% {
+      opacity: 0.3;
+    }
+    40% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    60% {
+      opacity: 0.6;
+    }
+    70% {
+      opacity: 0.7;
+    }
+    80% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.9;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .animation--rotateToLeft {
+    animation-name: rotateToLeft;
+    /* animation-delay: 0s; */
+  }
+  
+  @keyframes rotateToLeft {
+    0% {
+      transform: rotate(360deg);
+      right: -730px;
+    }
+    10% {
+      transform: rotate(324deg);
+      right: -657px;
+    }
+    20% {
+      transform: rotate(288deg);
+      right: -584px;
+    }
+    30% {
+      transform: rotate(252deg);
+      right: -511px;
+    }
+    40% {
+      transform: rotate(216deg);
+      right: -438px;
+    }
+    50% {
+      transform: rotate(180deg);
+      right: -365px;
+    }
+    60% {
+      transform: rotate(144deg);
+      right: -292px;
+    }
+    70% {
+      transform: rotate(108deg);
+      right: -219px;
+    }
+    80% {
+      transform: rotate(72deg);
+      right: -146px;
+    }
+    90% {
+      transform: rotate(36deg);
+      right: -73px;
+    }
+    100% {
+      transform: rotate(0deg);
+      right: 0px;
+    }
+  }
