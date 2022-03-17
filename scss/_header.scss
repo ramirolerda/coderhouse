@@ -5,16 +5,15 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+  
   background: rgba(255, 255, 255, 0.59);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   flex-wrap: wrap;
+  
+  @extend .flexCenter;
   .menu-icon {
     cursor: pointer;
     display: inline-block;
@@ -75,10 +74,10 @@
     width: 50px;
     height: 50px;
     margin: 0 20px;
-    background: $primaryColor;
+    background: map-get($colors, "primary");
     box-sizing: border-box;
     border-radius: 25px;
-    border: 4px solid $primaryColor;
+    border: 4px solid map-get($colors, "primary");
   }
 
   .searchInput input {
@@ -125,7 +124,7 @@
   .searchInput:hover .material-icons,
   .searchInput:valid .material-icons {
     background: #07051a;
-    color: $primaryColor;
+    color: map-get($colors, "primary");
   }
 
   /* Navbar */
@@ -151,23 +150,23 @@
 
   .menu__link {
     text-decoration: none;
-    color: $primaryColor;
+    color: map-get($colors, "primary");
     margin: 0 10px;
-    border-bottom: 0px solid $primaryColor;
+    border-bottom: 0px solid map-get($colors, "primary");
     transition: all 0.2s;
     font-size: 1.5rem;
   }
 
   .menu__link:hover {
-    border-bottom: 4px solid $primaryColor;
-    color: $primaryColor;
+    border-bottom: 4px solid map-get($colors, "primary");
+    color: map-get($colors, "primary");
     font-size: 2rem;
   }
 
   .menu__link--active {
     font-weight: bold;
-    border-bottom: 4px solid $primaryColor;
-    color: $primaryColor;
+    border-bottom: 4px solid map-get($colors, "primary");
+    color: map-get($colors, "primary");
   }
 
   .menu__items {
