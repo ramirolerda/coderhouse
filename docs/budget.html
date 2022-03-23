@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+  <head>
+    <script
+      src="https://kit.fontawesome.com/689fcc4765.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <meta charset="utf-8" />
+    <title>Presupuesto</title>
+    <style>
+      * {
+        --primaryColor: #09b07c;
+        --secondaryColor: #75bf1b;
+        --tertiaryColor: #9fcc64;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      @media print {
+        .pagebreak {
+          page-break-before: always;
+        } /* page-break-after works, as well */
+      }
+
+      body {
+        /* background: #34343B; */
+        margin: 0;
+        /* background-image: url(https://wallpaperaccess.com/full/1348933.jpg);
+        background-size: cover;
+        background-position: center top; */
+      }
+
+      .container {
+        margin: 10px;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        /* background: linear-gradient(87deg, #09b07c, #099eb0) !important;
+        opacity: .9!important; */
+      }
+
+      .row {
+        grid-column: span 12;
+      }
+
+      .clientDetailsContainer {
+        grid-column: span 12;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+
+      .detailsContainer {
+        grid-column: span 6;
+        display: grid;
+      }
+
+      .indicationsContainer {
+        grid-column: span 12;
+      }
+
+      .cookingRecipeContainer {
+        grid-column: span 12;
+      }
+
+      .fullContainer {
+        grid-column: span 12;
+      }
+
+      .middleContainer {
+        grid-column: span 6;
+      }
+
+      .header {
+        grid-column: span 12;
+        justify-content: center;
+      }
+
+      .footer {
+        padding-top: 10px;
+        grid-column: span 12;
+      }
+
+      .title {
+        width: 100%;
+        text-align: center;
+      }
+
+      .userName {
+        width: 100%;
+        text-align: center;
+      }
+
+      table {
+        text-align: center;
+      }
+
+      .recipe {
+        list-style: decimal;
+      }
+
+      .card {
+        background: linear-gradient(87deg, #09b07ccc, #75bf1bcc) !important;
+        background: white;
+        border-radius: 10px;
+        min-width: 80%;
+        margin: 10px;
+        color: #ffffff;
+        box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+          0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+          0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+          0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+      }
+
+      .cardHeader {
+        background: linear-gradient(
+          87deg,
+          var(--primaryColor),
+          var(--secondaryColor)
+        ) !important;
+        background: var(--primaryColor);
+        color: white !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        min-height: 50px;
+      }
+
+      .warning {
+        background: #ff6a6a !important;
+      }
+
+      .cardBody {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 10px;
+        height: 87%;
+      }
+
+      .primaryCard {
+        border-radius: 18px;
+        background: white;
+        box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+          0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+          0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+          0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+        text-align: center;
+      }
+
+      .primaryCard-text {
+        margin: 25px;
+      }
+      .primaryCard-text .date {
+        color: var(--primaryColor);
+        font-size: 0.7rem;
+      }
+      .primaryCard-text p {
+        color: grey;
+        font-size: 15px;
+        font-weight: 300;
+      }
+      h2 {
+        margin-top: 0px;
+        font-size: 28px;
+      }
+      .notes {
+        font-size: x-small;
+        vertical-align: top;
+      }
+
+      .professionalCard {
+        /* grid-area: stats; */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        background: var(--primaryColor);
+      }
+
+      .professionalCard .stat {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        color: white;
+        padding: 10px;
+      }
+
+      .primaryCard__Info {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        background: var(--primaryColor);
+      }
+
+      .primaryCard__Info .stat {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        color: white;
+        padding: 10px;
+      }
+
+      .chartContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+      .c-stepper {
+        --size: 3rem;
+        --spacing: 0.5rem;
+        margin: 0;
+        padding: 0;
+      }
+      .c-stepper__item {
+        position: relative;
+        display: flex;
+        /* gap: 0.5rem; */
+        /* padding-bottom: 0.5rem; */
+      }
+
+      .c-stepper__item:before {
+        --size: 3rem;
+        content: "";
+        position: relative;
+        z-index: 1;
+        flex: 0 0 var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        background-color: var(--secondaryColor);
+      }
+
+      .c-stepper__item:not(:last-child):after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(1.5rem);
+        width: 2px;
+        background-color: var(--secondaryColor);
+        top: calc(var(--size) + var(--spacing));
+        transform: translateX(calc(var(--size) / 2));
+        bottom: var(--spacing);
+      }
+      #chart_div svg g:nth-child(2) rect {
+        fill: transparent;
+        color: #ffffff;
+      }
+      #chart_div svg g:nth-child(3) rect:nth-child(odd) {
+        fill: transparent;
+      }
+      #chart_div svg g:nth-child(3) rect:nth-child(even) {
+        fill: transparent;
+        stroke: none;
+      }
+      #chart_div svg g:nth-child(3) text {
+          display: none;
+      }
+      #chart_div svg g:nth-child(3) line {
+        stroke: transparent;
+        stroke-width: 0;
+      }
+      g:nth-child(9) text {
+        fill: white;
+        font-weight: bold;
+      }
+      a {
+          /* text-decoration: none; */
+          color: #FFFFFF;
+          font-weight: bold;
+      }
+      .bold {
+          font-weight: bold;
+          font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">
+          <h1>Presupuesto</h1>
+        </div>
+      </div>
+      <div class="clientDetailsContainer">
+        <div class="primaryCard">
+          <div class="primaryCard-text">
+            <span class="date">
+              <!-- 04/03/2022 -->
+              <script>
+                document.write(new Date().toLocaleDateString("es-AR"));
+              </script>
+            </span>
+            <h3>Avocado</h3>
+          </div>
+          <div class="primaryCard__Info">
+            <!-- Peso -->
+            <div class="stat">
+              <div class="type">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="value">2 meses</div>
+            </div>
+            <!-- Altura -->
+            <div class="stat border">
+              <div class="type">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <div class="value">$50.640</div>
+            </div>
+            <!-- Edad -->
+            <div class="stat">
+              <div class="type">
+                <i class="fas fa-question"></i>
+              </div>
+              <div class="value">2 mes gratis</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fullContainer">
+        <div class="card">
+          <div class="cardHeader">
+            <h3>Objetivos</h3>
+          </div>
+          <div class="cardBody">
+            <div class="container">
+              <div class="row">
+                <p>
+                  Creación de un sitio web en el cual se podrán visualizar de
+                  manera rápida y sencilla todos los platos disponibles, junto a
+                  su descripción e información.
+                </p>
+                <p>
+                  El sitio será adaptable a multiples dispositivos, tendrá
+                  animaciones, formularios de contacto, una sección de
+                  información de la empresa, de contacto, y finalmente la
+                  información especifica de los platos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Indicaciones -->
+      <div class="indicationsContainer">
+        <div class="card">
+          <div class="cardHeader">
+            <h3>Cronograma</h3>
+          </div>
+          <div class="cardBody">
+            <div class="container" style="width: 100%">
+              <div class="row" style="width: 90%">
+                <div id="chart_div"></div>
+              </div>
+            </div>
+            <script>
+              google.charts.load("current", { packages: ["gantt"] });
+              google.charts.setOnLoadCallback(drawChart);
+
+              function daysToMilliseconds(days) {
+                return days * 24 * 60 * 60 * 1000;
+              }
+
+              function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn("string", "Task ID");
+                data.addColumn("string", "Task Name");
+                data.addColumn("date", "Start Date");
+                data.addColumn("date", "End Date");
+                data.addColumn("number", "Duration");
+                data.addColumn("number", "Percent Complete");
+                data.addColumn("string", "Dependencies");
+
+                data.addRows([
+                  [
+                    "design",
+                    "Diseño",
+                    new Date(2022, 3, 1),
+                    new Date(2022, 3, 7),
+                    null,
+                    0,
+                    null,
+                  ],
+                  [
+                    "layout",
+                    "Maquetación",
+                    new Date(2022, 3, 7),
+                    new Date(2022, 3, 20),
+                    null,
+                    0,
+                    "design",
+                  ],
+                  [
+                    "styles",
+                    "Estilos",
+                    new Date(2022, 3, 14),
+                    new Date(2022, 3, 28),
+                    null,
+                    0,
+                    "design,layout",
+                  ],
+                  [
+                    "test",
+                    "Pruebas y conformidad",
+                    new Date(2022, 3, 28),
+                    new Date(2022, 4, 5),
+                    null,
+                    0,
+                    "design,layout,styles",
+                  ],
+                  [
+                    "end",
+                    "Subida al Servidor y entrega",
+                    new Date(2022, 4, 5),
+                    new Date(2022, 4, 12),
+                    null,
+                    0,
+                    "test",
+                  ],
+                ]);
+
+                var options = {
+                  height: 275,
+                  width: "100%",
+                  gantt: {
+                    palette: [
+                      {
+                        color: "#09b07c",
+                        dark: "#75bf1b",
+                        light: "#eeeeee",
+                      },
+                    ],
+                    criticalPathEnabled: false, // Critical path arrows will be the same as other arrows.
+                    arrow: {
+                      angle: 50,
+                      width: 2,
+                      color: "white",
+                      radius: 10,
+                    },
+                  },
+                };
+
+                var chart = new google.visualization.Gantt(
+                  document.getElementById("chart_div")
+                );
+
+                chart.draw(data, options);
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+      <div class="fullContainer pagebreak">
+        <div class="card">
+          <div class="cardHeader">
+            <h3>Detalles del Proyecto</h3>
+          </div>
+          <div class="cardBody">
+            <div class="container">
+                <!-- <div class="row">
+                    El tiempo estimado para el desarrollo es de dos meses desde el dia en el que se acepta el trabajo
+                </div> -->
+              <div class="detailsContainer">
+                <div class="card">
+                  <div class="cardHeader">
+                    <h3>¿Que haremos?</h3>
+                  </div>
+                  <div class="cardBody">
+                    <div class="container">
+                      <div class="row">
+                        <ol class="c-stepper">
+                          <li class="c-stepper__item">
+                            <div class="c-stepper__content">
+                              <h3 class="c-stepper__title">Diseño</h3>
+                              <p>
+                                Se realizara un diseño preliminar del sitio web,
+                                el cual se realizara teniendo en cuenta los
+                                deseos del cliente, las posibilidades técnicas,
+                                y nuestras recomendaciones y experiencias.
+                              </p>
+                            </div>
+                          </li>
+                          <li class="c-stepper__item">
+                            <div class="c-stepper__content">
+                              <h3 class="c-stepper__title">Maquetación</h3>
+                              <p>
+                                Aquí comenzara el proceso de desarrollo del
+                                sitio web, primero crearemos las estructuras
+                                básicas que tendrá el sitio web, para luego
+                                poder continuar con una base solida.
+                              </p>
+                            </div>
+                          </li>
+                          <li class="c-stepper__item">
+                            <div class="c-stepper__content">
+                              <h3 class="c-stepper__title">Estilos</h3>
+                              <p>
+                                Una vez tengamos las estructuras básicas,
+                                podremos comenzar a darle un mejor
+                                <i>look and feel</i> a nuestro sitio web,
+                                logrando asi que sea mucho mas moderno y
+                                atractivo para los clientes.
+                              </p>
+                            </div>
+                          </li>
+                          <li class="c-stepper__item">
+                            <div class="c-stepper__content">
+                              <h3 class="c-stepper__title">
+                                Pruebas y conformidad
+                              </h3>
+                              <p>
+                                Cuando las estructuras y estilos estén
+                                finalizados, realizaremos pruebas, para
+                                controlar el correcto funcionamiento y aspecto
+                                del sitio.
+                              </p>
+                            </div>
+                          </li>
+                          <li class="c-stepper__item">
+                            <div class="c-stepper__content">
+                              <h3 class="c-stepper__title">
+                                Subida al Servidor y entrega
+                              </h3>
+                              <p>
+                                En esta etapa del proyecto subiremos el sitio a
+                                un hosting, y este sera configurado para que
+                                finalmente pueda ser accesible por los clientes.
+                              </p>
+                            </div>
+                          </li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="detailsContainer">
+                <div class="card">
+                  <div class="cardHeader">
+                    <h3>¿Que recursos usaremos?</h3>
+                  </div>
+                  <div class="cardBody">
+                      <div class="container">
+                        <div class="row">
+                          <h3>Para el desarrollo</h3>
+                          <ul>
+                            <li>HTML para la estructuras</li>
+                            <li><a href="https://getbootstrap.com/">Bootstrap</a> para el maquetado.</li>
+                            <li>CSS y SASS para los estilos del sitio.</li>
+                            <li>Google Fonts para las fuentes.</li>
+                            <li><a href="https://fontawesome.com/">Font Awesome</a> para la iconografia.</li>
+                          </ul>
+                        </div>
+                        <div class="row">
+                          <h3>Para la puesta en producción</h3>
+                          <ul>
+                            <li>Utilizaremos un dominio para tener un facil acceso al sitio</li>
+                            <li>Un <a href="https://donweb.com/es-ar/">hosting dedicado</a> en donde poder almacenar y desde el cual poder administrar el sitio.</li>
+                          </ul>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fullContainer pagebreak">
+        <div class="card">
+          <div class="cardHeader">
+            <h3>¿Cual es el costo del proyecto?</h3>
+          </div>
+          <div class="cardBody">
+              <div class="container">
+                <div class="row">
+                  <p class="title">El costo total del proyecto sera de $50.640*</p>
+                <div class="row container title">
+                    <div class="middleContainer">
+                        <a href="https://donweb.com/es-ar/registro-de-dominios?dominio=avocado.com.ar">Dominio</a>
+                    </div>
+                    <div class="middleContainer">
+                        $475 <sup><small>1</small></sup>
+                    </div>
+                </div>
+                <div class="row container title">
+                    <div class="middleContainer">
+                        <a href="https://donweb.com/es-ar/web-hosting">Hosting</a>
+                    </div>
+                    <div class="middleContainer">
+                        $199 <sup><small>2</small></sup>
+                    </div>
+                </div>
+                <div class="row container title">
+                    <div class="middleContainer">
+                        Desarrollo del proyecto
+                    </div>
+                    <div class="middleContainer">
+                        $50.000 <sup><small>3</small></sup>
+                    </div>
+                </div>
+                <hr>
+                <div class="row container title">
+                    <div class="middleContainer bold">
+                        Total
+                    </div>
+                    <div class="middleContainer bold">
+                        $50.640
+                    </div>
+                </div>
+                <div class="row">
+                    <small>*Este costos es valido hasta un mes después de que se entregue el presupuesto, este costo no incluye modificaciones de estilo, estructura o contenido que se deseen incluir en un futuro.</small>
+                </div>
+                <div class="row">
+                    <small>1. El costo del dominio es anual, el primer mes esta incluido en este presupuesto</small>
+                </div>
+                <div class="row">
+                    <small>2. El costo del hosting es mensual, el primer mes esta incluido en este presupuesto</small>
+                </div>
+                <div class="row">
+                    <small>3. El costo de desarrollo incluye la maquetacion, diseño y elaboración del sitio, ademas dos meses gratis de consultas sobre el sitio</small>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer class="footer">
+    <div class="clientDetailsContainer">
+      <div class="primaryCard">
+        <div class="primaryCard-text">
+          <h3>Ramiro Mariano Lerda</h3>
+        </div>
+        <div class="professionalCard">
+          <div class="stat">
+            <div class="type">
+              <i class="fas fa-id-card"></i>
+            </div>
+            <div class="value"><small>Analista de Sistemas</small></div>
+          </div>
+          <!-- <div class="stat border">
+            <div class="type">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <div class="value">La Cordillera 4892 PA</div>
+          </div> -->
+          <div class="stat">
+            <div class="type">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="value">+54 9 351 660-8566</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</html>

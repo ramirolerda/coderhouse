@@ -35,3 +35,7 @@ $colors: (
   @extend .flexCenter;
 }
 ```
+background: linear-gradient(87deg, #09b07c, #099eb0) !important;
+background: linear-gradient(87deg, rgba(9, 176, 123, 0.8), rgba(9, 159, 176, 0.8)) !important;
+# Entrega Presupuesto
+Se agrego el presupuesto en la carpeta de docs
